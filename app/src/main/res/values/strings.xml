@@ -5,6 +5,7 @@
 
     <!-- Strings related to Heroes Page -->
     <string name="title_activity_heroes">Heroes</string>
+    <string name="btnTestMsg">Test message</string>
 
     <!-- Strings related to Settings -->
     <string name="title_activity_settings">Settings</string>

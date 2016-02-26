@@ -5,18 +5,48 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 public class HeroesActivity extends AppCompatActivity {
+    protected HotsAppApplication application;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        application = (HotsAppApplication)getApplicationContext();
+
         setContentView(R.layout.activity_heroes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Button btnTestMsg = (Button)findViewById(R.id.viewBtnTestMsg);
+        btnTestMsg.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, "xxx");
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        application.setCurrentActivity(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        application.unsetCurrentActivity(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        application.unsetCurrentActivity(this);
+        super.onDestroy();
     }
 
     @Override

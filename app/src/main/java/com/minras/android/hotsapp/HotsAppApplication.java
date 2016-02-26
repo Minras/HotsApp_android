@@ -61,6 +61,6 @@ public class HotsAppApplication
         Snackbar snackbar = Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG);
         ViewGroup snackView = (ViewGroup) snackbar.getView();
         snackView.setBackgroundColor(ContextCompat.getColor(snackView.getContext(), bgColor));
-        snackbar.setActionTextColor(Color.GREEN).show();
+        snackbar.show();
     }
 }
