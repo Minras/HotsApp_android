@@ -6,7 +6,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,10 +25,11 @@ public class HeroesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Button btnTestMsg = (Button)findViewById(R.id.viewBtnTestMsg);
-        btnTestMsg.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, "xxx");
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, "" + position);
             }
         });
     }
