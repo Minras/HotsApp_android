@@ -7,11 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 
-import java.io.IOException;
-import java.io.InputStream;
+import com.minras.android.hotsapp.manager.MessageManager;
 
 public class HeroesActivity extends AppCompatActivity {
     protected HotsAppApplication application;
@@ -72,21 +70,5 @@ public class HeroesActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public String loadHeroesData() {
-        String json;
-        try {
-            InputStream is = getAssets().open("json/heroes.json");
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
     }
 }

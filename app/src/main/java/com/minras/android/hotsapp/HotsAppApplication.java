@@ -7,7 +7,11 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.ViewGroup;
 
+import com.minras.android.hotsapp.manager.HeroManager;
 import com.minras.android.hotsapp.manager.MessageManager;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 
 public class HotsAppApplication
@@ -17,6 +21,9 @@ public class HotsAppApplication
     public void onCreate() {
         super.onCreate();
         MessageManager.getInstance().subscribeMessageListener(this);
+
+        String hJson = loadHeroesJsonString();
+        HeroManager.getInstance().initialize(hJson);
     }
 
     private Activity mCurrentActivity = null;
@@ -63,5 +70,20 @@ public class HotsAppApplication
         ViewGroup snackView = (ViewGroup) snackbar.getView();
         snackView.setBackgroundColor(ContextCompat.getColor(snackView.getContext(), bgColor));
         snackbar.show();
+    }
+
+    public String loadHeroesJsonString() {
+        String json = null;
+        try {
+            InputStream is = getAssets().open(HeroManager.PATH_LOCAL_HERO_JSON);
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, "UTF-8");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return json;
     }
 }
