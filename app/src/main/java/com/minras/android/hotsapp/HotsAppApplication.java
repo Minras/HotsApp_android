@@ -2,11 +2,12 @@ package com.minras.android.hotsapp;
 
 import android.app.Activity;
 import android.app.Application;
-import android.graphics.Color;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.view.ViewGroup;
+
+import com.minras.android.hotsapp.manager.MessageManager;
 
 
 public class HotsAppApplication

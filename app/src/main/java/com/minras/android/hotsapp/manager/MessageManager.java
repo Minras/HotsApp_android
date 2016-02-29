@@ -1,4 +1,4 @@
-package com.minras.android.hotsapp;
+package com.minras.android.hotsapp.manager;
 
 import java.util.ArrayList;
 
