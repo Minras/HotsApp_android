@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import com.minras.android.hotsapp.R;
 
 public class HeroManager {
     public static final String PATH_LOCAL_HERO_JSON = "json/heroes.json";
@@ -75,6 +76,9 @@ public class HeroManager {
 
     public HashMap<String, JSONObject> getHeroes() {
         return heroes;
+    }
+    public Integer getHeroesPortraits() {
+        return R.drawable.hero_portrait_chen;
     }
 
     public JSONObject getHero(String name) {

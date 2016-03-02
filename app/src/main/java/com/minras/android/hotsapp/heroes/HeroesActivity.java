@@ -1,8 +1,10 @@
 package com.minras.android.hotsapp.heroes;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,12 @@ import com.minras.android.hotsapp.manager.MessageManager;
 public class HeroesActivity extends AppCompatActivity {
     protected HotsAppApplication application;
 
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
+        return (int)px;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +33,9 @@ public class HeroesActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        GridView gridview = (GridView) findViewById(R.id.gridview);
-        gridview.setAdapter(new ImageAdapter(this));
+        GridView gridview = (GridView) findViewById(R.id.heroesGridView);
+        gridview.setColumnWidth(92 + 2 * gridview.getHorizontalSpacing());
+        gridview.setAdapter(new HeroListAdapter(this));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, "" + position);
