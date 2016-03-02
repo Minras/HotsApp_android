@@ -13,7 +13,10 @@ import android.widget.GridView;
 
 import com.minras.android.hotsapp.HotsAppApplication;
 import com.minras.android.hotsapp.R;
+import com.minras.android.hotsapp.manager.HeroManager;
 import com.minras.android.hotsapp.manager.MessageManager;
+
+import org.json.JSONException;
 
 public class HeroesActivity extends AppCompatActivity {
     protected HotsAppApplication application;
@@ -32,7 +35,14 @@ public class HeroesActivity extends AppCompatActivity {
         gridview.setAdapter(new HeroListAdapter(this));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, "" + position);
+                String name;
+                try {
+                    name = HeroManager.getInstance().getHero(position).getString("name");
+                } catch (JSONException e) {
+                    // e.printStackTrace();
+                    name = "Error defining the hero name!";
+                }
+                MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, name);
             }
         });
     }

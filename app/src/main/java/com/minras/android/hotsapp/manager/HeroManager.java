@@ -8,10 +8,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import com.minras.android.hotsapp.R;
 
 public class HeroManager {
     public static final String PATH_LOCAL_HERO_JSON = "json/heroes.json";
@@ -93,9 +91,15 @@ public class HeroManager {
         Resources resources = context.getResources();
         return resources.getIdentifier(resName, "drawable", context.getPackageName());
     }
+    public String getHeroNormalizedName(int idx) {
+        return heroesNames.get(idx);
+    }
 
     public JSONObject getHero(String name) {
         return heroes.get(name);
+    }
+    public JSONObject getHero(int idx) {
+        return heroes.get(getHeroNormalizedName(idx));
     }
 
 }
