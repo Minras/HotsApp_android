@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".HeroesActivity"
+            android:name=".heroes.HeroesActivity"
             android:label="@string/title_activity_heroes"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

@@ -1,4 +1,4 @@
-package com.minras.android.hotsapp;
+package com.minras.android.hotsapp.heroes;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import com.minras.android.hotsapp.HotsAppApplication;
+import com.minras.android.hotsapp.R;
 import com.minras.android.hotsapp.manager.MessageManager;
 
 public class HeroesActivity extends AppCompatActivity {
