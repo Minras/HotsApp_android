@@ -18,12 +18,6 @@ import com.minras.android.hotsapp.manager.MessageManager;
 public class HeroesActivity extends AppCompatActivity {
     protected HotsAppApplication application;
 
-    private int dpToPx(int dp) {
-        Resources r = getResources();
-        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
-        return (int)px;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

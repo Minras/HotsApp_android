@@ -1,9 +1,15 @@
 package com.minras.android.hotsapp.manager;
 
+import android.content.Context;
+import android.content.res.Resources;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import com.minras.android.hotsapp.R;
 
@@ -11,6 +17,7 @@ public class HeroManager {
     public static final String PATH_LOCAL_HERO_JSON = "json/heroes.json";
 
     private HashMap<String, JSONObject> heroes = new HashMap<>();
+    private ArrayList<String> heroesNames = new ArrayList<>();
 
     // singleton code
     protected HeroManager() {
@@ -67,6 +74,8 @@ public class HeroManager {
                 heroes.put(name, hero);
                 j++;
             }
+            heroesNames.addAll(heroes.keySet());
+            Collections.sort(heroesNames);
         } catch (JSONException e) {
             MessageManager.getInstance()
                     .sendMessage(MessageManager.STATUS_ERROR, e.getMessage());
@@ -77,8 +86,12 @@ public class HeroManager {
     public HashMap<String, JSONObject> getHeroes() {
         return heroes;
     }
-    public Integer getHeroesPortraits() {
-        return R.drawable.hero_portrait_chen;
+    public Integer getHeroesPortrait(int idx, Context context) {
+        String resName = String.format("hero_portrait_%s", heroesNames.get(idx));
+        // return R.drawable.hero_portrait_chen;
+
+        Resources resources = context.getResources();
+        return resources.getIdentifier(resName, "drawable", context.getPackageName());
     }
 
     public JSONObject getHero(String name) {

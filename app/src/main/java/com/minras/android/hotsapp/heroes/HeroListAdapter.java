@@ -41,7 +41,7 @@ public class HeroListAdapter extends BaseAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(HeroManager.getInstance().getHeroesPortraits());
+        imageView.setImageResource(HeroManager.getInstance().getHeroesPortrait(position, mContext));
         return imageView;
     }
 }
