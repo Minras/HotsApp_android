@@ -1,10 +1,8 @@
 package com.minras.android.hotsapp.heroes;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,15 +29,13 @@ public class HeroesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         GridView gridview = (GridView) findViewById(R.id.heroesGridView);
-        gridview.setColumnWidth(92 + 2 * gridview.getHorizontalSpacing());
-        gridview.setAdapter(new HeroListAdapter(this));
+        gridview.setAdapter(new HeroListPortraitAdapter(this));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 String name;
                 try {
                     name = HeroManager.getInstance().getHero(position).getString("name");
                 } catch (JSONException e) {
-                    // e.printStackTrace();
                     name = "Error defining the hero name!";
                 }
                 MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, name);

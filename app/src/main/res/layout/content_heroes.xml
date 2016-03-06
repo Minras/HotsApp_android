@@ -12,10 +12,10 @@
         android:id="@+id/heroesGridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:columnWidth="50dp"
+        android:columnWidth="90dp"
         android:numColumns="auto_fit"
-        android:verticalSpacing="2dp"
-        android:horizontalSpacing="2dp"
+        android:verticalSpacing="4dp"
+        android:horizontalSpacing="4dp"
         android:stretchMode="columnWidth"
         android:gravity="center"
         />
