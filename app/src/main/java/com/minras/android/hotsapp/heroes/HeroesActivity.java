@@ -29,7 +29,7 @@ public class HeroesActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         GridView gridview = (GridView) findViewById(R.id.heroesGridView);
-        gridview.setAdapter(new HeroListPortraitAdapter(this));
+        gridview.setAdapter(new HeroesListPortraitAdapter(this));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 String name;

@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,10 +13,10 @@ import com.minras.android.hotsapp.manager.HeroManager;
 
 import org.json.JSONException;
 
-public class HeroListPortraitAdapter extends BaseAdapter {
+public class HeroesListPortraitAdapter extends BaseAdapter {
     private Context mContext;
 
-    public HeroListPortraitAdapter(Context c) {
+    public HeroesListPortraitAdapter(Context c) {
         mContext = c;
     }
 
@@ -50,15 +49,10 @@ public class HeroListPortraitAdapter extends BaseAdapter {
 
             ImageView imageView = (ImageView) gridItemView.findViewById(R.id.grid_item_image);
             imageView.setImageResource(HeroManager.getInstance().getHeroesPortrait(position, mContext));
-//            imageView = new ImageView(mContext);
-//            imageView.setLayoutParams(new GridView.LayoutParams(92, 93));
-//            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-//            imageView.setPadding(8, 8, 8, 8);
         } else {
             gridItemView = convertView;
         }
 
-//        imageView.setImageResource(HeroManager.getInstance().getHeroesPortrait(position, mContext));
         return gridItemView;
     }
 }
