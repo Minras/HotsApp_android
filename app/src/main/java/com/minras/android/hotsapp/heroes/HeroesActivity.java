@@ -1,5 +1,6 @@
 package com.minras.android.hotsapp.heroes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,7 +13,6 @@ import android.widget.GridView;
 import com.minras.android.hotsapp.HotsAppApplication;
 import com.minras.android.hotsapp.R;
 import com.minras.android.hotsapp.manager.HeroManager;
-import com.minras.android.hotsapp.manager.MessageManager;
 
 import org.json.JSONException;
 
@@ -22,7 +22,7 @@ public class HeroesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        application = (HotsAppApplication)getApplicationContext();
+        application = (HotsAppApplication) getApplicationContext();
 
         setContentView(R.layout.activity_heroes);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -32,15 +32,22 @@ public class HeroesActivity extends AppCompatActivity {
         gridview.setAdapter(new HeroesListPortraitAdapter(this));
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                String name;
+                /*String name;
                 try {
                     name = HeroManager.getInstance().getHero(position).getString("name");
                 } catch (JSONException e) {
                     name = "Error defining the hero name!";
                 }
                 MessageManager.getInstance().sendMessage(MessageManager.STATUS_WARNING, name);
+                */
+                openHeroPage(position);
             }
         });
+    }
+
+    private void openHeroPage(int idx) {
+        Intent intent = new Intent(this, HeroActivity.class);
+        startActivity(intent);
     }
 
     @Override

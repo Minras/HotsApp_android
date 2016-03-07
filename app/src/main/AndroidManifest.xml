@@ -22,7 +22,15 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings">
+            android:label="@string/title_activity_settings"></activity>
+        <activity
+            android:name=".heroes.HeroActivity"
+            android:label="@string/title_activity_hero"
+            android:parentActivityName="com.minras.android.hotsapp.heroes.HeroesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.minras.android.hotsapp.heroes.HeroesActivity" />
         </activity>
     </application>
 

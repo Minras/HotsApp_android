@@ -7,6 +7,10 @@
     <string name="title_activity_heroes">Heroes</string>
     <string name="btnTestMsg">Test message</string>
 
+    <!-- Strings related to Hero Page -->
+    <string name="title_activity_hero">Hero Details</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
     <!-- Strings related to Settings -->
     <string name="title_activity_settings">Settings</string>
 
